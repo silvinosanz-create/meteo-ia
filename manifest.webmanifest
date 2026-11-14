@@ -1,0 +1,25 @@
+{
+  "name": "Meteo IA",
+  "short_name": "Meteo IA",
+  "description": "Comparador meteorológico inteligente para España y la Ribera Alta.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#071326",
+  "theme_color": "#0b1830",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1830">
+  <meta name="description" content="Meteo IA: comparación meteorológica para España y la Ribera Alta de Valencia.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Meteo IA</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">☀</div><div><b>Meteo IA</b><small>INTELIGENCIA METEOROLÓGICA</small></div></div>
+    <button id="refreshBtn" class="icon-btn" aria-label="Actualizar" title="Actualizar">↻</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">PREDICCIÓN MULTIMODELO · ESPAÑA</div>
+        <h1>El tiempo, <span>con criterio.</span></h1>
+        <p>Comparamos modelos meteorológicos para encontrar el escenario más probable.</p>
+      </div>
+      <div class="hero-orb">🌤️</div>
+    </section>
+
+    <section class="controls panel">
+      <div class="field">
+        <label for="placeSelect">Localidad</label>
+        <select id="placeSelect"></select>
+      </div>
+      <div class="field">
+        <label for="periodSelect">Horizonte</label>
+        <select id="periodSelect"><option value="3">3 días</option><option value="7" selected>7 días</option><option value="14">14 días</option></select>
+      </div>
+      <div class="updated" id="updated">Preparando consulta…</div>
+    </section>
+
+    <section class="section-head">
+      <div><div class="eyebrow">RESULTADO COMBINADO</div><h2>Escenario más probable</h2></div>
+      <span class="live-dot">EN DIRECTO</span>
+    </section>
+    <section class="summary-grid">
+      <article class="metric panel"><div class="metric-label">Temperatura ahora</div><div class="metric-value" id="currentTemp">--°</div><div class="metric-sub" id="currentDesc">Consultando modelos…</div></article>
+      <article class="metric panel"><div class="metric-label">Lluvia próxima 24 h</div><div class="metric-value" id="rain24">-- <small>mm</small></div><div class="metric-sub" id="rainChance">Probabilidad --</div></article>
+      <article class="metric panel"><div class="metric-label">Viento medio</div><div class="metric-value" id="windNow">-- <small>km/h</small></div><div class="metric-sub">A 10 metros</div></article>
+      <article class="metric panel"><div class="metric-label">Acuerdo entre modelos</div><div class="metric-value" id="agreement">--</div><div class="metric-sub" id="agreementText">Esperando datos</div></article>
+    </section>
+
+    <section class="panel insight">
+      <div class="insight-icon">✦</div>
+      <div><b>Lectura de Meteo IA</b><p id="aiSummary">Cargando y comparando las últimas salidas disponibles de los modelos.</p></div>
+    </section>
+
+    <section class="section-head"><div><div class="eyebrow">CENTROS DE PREDICCIÓN</div><h2>Comparativa de modelos</h2></div></section>
+    <div id="modelGrid" class="model-grid"><div class="loading panel">Consultando ECMWF, GFS, ICON y otros modelos…</div></div>
+
+    <section class="section-head"><div><div class="eyebrow">EVOLUCIÓN HORARIA</div><h2>Próximas 24 horas</h2></div></section>
+    <section class="panel chart-panel">
+      <div class="chart-legend"><span><i class="legend-temp"></i> Temperatura</span><span><i class="legend-rain"></i> Lluvia</span></div>
+      <div id="hourlyChart" class="hourly-chart"><div class="loading">Cargando gráfico…</div></div>
+    </section>
+
+    <section class="section-head"><div><div class="eyebrow">PRONÓSTICO DIARIO</div><h2>Los próximos días</h2></div></section>
+    <section class="panel forecast-list" id="dailyList"><div class="loading">Cargando predicción…</div></section>
+
+    <section class="section-head"><div><div class="eyebrow">TRANSPARENCIA</div><h2>Fiabilidad y método</h2></div></section>
+    <section class="panel methodology">
+      <div class="method-row"><span>Modelos consultados</span><b id="modelCount">4</b></div>
+      <div class="method-row"><span>Fuente meteorológica</span><b>Open-Meteo</b></div>
+      <div class="method-row"><span>Validación histórica</span><b class="pending">En preparación</b></div>
+      <p>El acuerdo entre modelos indica cuánto coinciden sus previsiones; no equivale todavía a una probabilidad calibrada de acierto. La puntuación histórica se incorporará cuando se conecte el archivo de pronósticos pasados con observaciones reales de estaciones.</p>
+    </section>
+    <footer>METEO IA · Proyecto inicial · Datos sujetos a actualización de los modelos.</footer>
+  </main>
+  <nav class="bottom-nav"><a class="active" href="#top">⌂<small>Tiempo</small></a><a href="#modelGrid">▥<small>Modelos</small></a><a href="#dailyList">▤<small>Pronóstico</small></a><a href="#methodology">ⓘ<small>Método</small></a></nav>
+  <div id="toast" role="status" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
